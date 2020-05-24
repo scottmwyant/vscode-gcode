@@ -1,0 +1,42 @@
+{
+    "name": "gcode",
+    "displayName": "gcode",
+    "description": "gcode",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.46.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:gcode.helloWorld"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "gcode.toggleComment",
+                "title": "Toggle Comment",
+                "category": "G-Code"
+            },
+            {
+                "command": "gcode.addLineNumbers",
+                "title": "Line Numbers (Add/Update)",
+                "category": "G-Code"
+            },
+            {
+                "command": "gcode.removeLineNumbers",
+                "title": "Line Numbers (Remove)",
+                "category": "G-Code"
+            }
+        ]
+    },
+    "scripts": {
+        "compile": "tsc"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.46.0",
+        "typescript": "^3.8.0"
+    }
+}
