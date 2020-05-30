@@ -1,0 +1,34 @@
+{
+    "name": "gcode",
+    "displayName": "gcode",
+    "description": "gcode",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.45.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "gcode",
+                "aliases": [
+                    "G-Code",
+                    "gcode"
+                ],
+                "extensions": [
+                    ".nc"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "gcode",
+                "scopeName": "source.gcode",
+                "path": "./syntaxes/gcode.tmLanguage.json"
+            }
+        ]
+    }
+}
