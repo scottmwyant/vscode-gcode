@@ -10,7 +10,9 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:gcode.helloWorld"
+        "onCommand:gcode.toggleComment",
+        "onCommand:gcode.addLineNumbers",
+        "onCommand:gcode.removeLineNumbers"
     ],
     "main": "./out/extension.js",
     "contributes": {
