@@ -4,11 +4,17 @@
     "description": "gcode",
     "version": "0.0.1",
     "engines": {
-        "vscode": "^1.45.0"
+        "vscode": "^1.46.0"
     },
     "categories": [
         "Programming Languages"
     ],
+    "activationEvents": [
+        "onCommand:gcode.toggleComment",
+        "onCommand:gcode.addLineNumbers",
+        "onCommand:gcode.removeLineNumbers"
+    ],
+    "main": "./out/extension.js",
     "contributes": {
         "languages": [
             {
@@ -29,6 +35,30 @@
                 "scopeName": "source.gcode",
                 "path": "./syntaxes/gcode.tmLanguage.json"
             }
+        ],
+        "commands": [
+            {
+                "command": "gcode.toggleComment",
+                "title": "Toggle Comment",
+                "category": "G-Code"
+            },
+            {
+                "command": "gcode.addLineNumbers",
+                "title": "Line Numbers (Add/Update)",
+                "category": "G-Code"
+            },
+            {
+                "command": "gcode.removeLineNumbers",
+                "title": "Line Numbers (Remove)",
+                "category": "G-Code"
+            }
         ]
+    },
+    "scripts": {
+        "compile": "tsc"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.46.0",
+        "typescript": "^3.8.0"
     }
 }
