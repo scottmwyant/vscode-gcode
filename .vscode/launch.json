@@ -14,7 +14,8 @@
                 "--extensionDevelopmentPath=${workspaceFolder}",
                 "--disable-extensions",
                 "${workspaceRoot}/.vscode/sample.nc"
-            ]
+            ],
+            "preLaunchTask": "${defaultBuildTask}"
         }
     ]
 }
