@@ -10,9 +10,7 @@
         "Programming Languages"
     ],
     "activationEvents": [
-        "onCommand:gcode.toggleComment",
-        "onCommand:gcode.addLineNumbers",
-        "onCommand:gcode.removeLineNumbers"
+        "onLanguage:gcode"
     ],
     "main": "./out/extension.js",
     "contributes": {
