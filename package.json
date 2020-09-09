@@ -50,7 +50,25 @@
                 "title": "Line Numbers (Remove)",
                 "category": "G-Code"
             }
-        ]
+        ],
+        "configuration": {
+            "title": "G-Code",
+            "properties": {
+                "gcode.definitions": {
+                    "description": "Definitions for G and M codes.",
+                    "type": "object",
+                    "default": {
+                        "G0": "Rapid, linear interpolation",
+                        "G1": "Feed, linear interpolation",
+                        "G2": "Feed, circular interpolation, clockwise",
+                        "G3": "Feed, circular interpolation, counter-clockwise",
+                        "M3": "Spindle start, clockwise",
+                        "M4": "Spindle start, counter-clockwise",
+                        "M5": "Spindle stop"
+                    }
+                }
+            }
+        }
     },
     "scripts": {
         "compile": "tsc"
