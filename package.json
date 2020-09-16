@@ -71,10 +71,19 @@
         }
     },
     "scripts": {
-        "compile": "tsc"
+        "compile": "tsc",
+        "test": "ts-mocha --reporter=list './test/*.ts'"
     },
     "devDependencies": {
+        "@types/chai": "^4.2.12",
+        "@types/mocha": "^8.0.3",
         "@types/vscode": "^1.46.0",
-        "typescript": "^3.8.0"
+        "chai": "^4.2.0",
+        "mocha": "^8.1.3",
+        "typescript": "^3.8.0",
+        "ts-mocha": "^7.0.0"
+    },
+    "dependencies": {
+        "vscode": "^1.1.37"
     }
 }

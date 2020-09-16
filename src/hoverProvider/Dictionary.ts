@@ -1,4 +1,4 @@
-import { ExtensionContext, window, workspace } from 'vscode'
+// import { ExtensionContext, window, workspace } from 'vscode'
 
 interface Definitions {
     [key: string]: string
@@ -14,31 +14,31 @@ export class Dictionary {
 
         // Initialize definitions
         this.definitionsFromComments = (fileText == undefined) ? {} : this._refreshDefinitionsFromComments(fileText);
-        this.definitionsFromSettings = this._refreshDefinitionsFromSettings();
+        //this.definitionsFromSettings = this._refreshDefinitionsFromSettings();
         this.definitions = this.mergeDefinitions();
     }
 
 
-    public register(context: ExtensionContext): void {
+    // public register(context: ExtensionContext): void {
         
-        // Register a function to parse comments when the active editor changes
-        context.subscriptions.push(
-            window.onDidChangeActiveTextEditor(event => {
-                if (event != undefined && event.document.languageId != 'gcode') {
-                    this.refreshDefinitionsFromComments(event.document.getText());
-                }
-            })
-        );
+    //     // Register a function to parse comments when the active editor changes
+    //     context.subscriptions.push(
+    //         window.onDidChangeActiveTextEditor(event => {
+    //             if (event != undefined && event.document.languageId != 'gcode') {
+    //                 this.refreshDefinitionsFromComments(event.document.getText());
+    //             }
+    //         })
+    //     );
 
-        // Register a function to read definitions from settings when any config file is changed
-        context.subscriptions.push(
-            workspace.onDidChangeConfiguration(event => {
-                if (event.affectsConfiguration('gcode.definitions')) {
-                    this.refreshDefinitionsFromSettings();
-                }
-            })
-        );
-    }
+    //     // Register a function to read definitions from settings when any config file is changed
+    //     context.subscriptions.push(
+    //         workspace.onDidChangeConfiguration(event => {
+    //             if (event.affectsConfiguration('gcode.definitions')) {
+    //                 this.refreshDefinitionsFromSettings();
+    //             }
+    //         })
+    //     );
+    // }
 
     public lookup(code: string){
         const removeLeadingZeros = (code: string) => code.substring(0,1) + parseInt(code.substring(1)).toString();
