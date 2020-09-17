@@ -49,7 +49,7 @@ export class Dictionary {
             return JSON.parse(jsonString);
         }
 
-        const regex = /\(\s*[A-Z0-9]{2,5}\s*[:=]\s*[a-zA-Z0-9\,\s]+\s*\)/g;
+        const regex = /\(\s*[A-Z][A-Z0-9]{1,4}\s*[:=]\s*([\w\,\.\-\+\.\;]+\s*)+\)/g;
         const matches = fileText.match(regex);
         const obj = (matches == null) ? {} : parse(matches);
         return this.removeLeadingZerosFromKeys(obj);
