@@ -1,4 +1,3 @@
-// import { ExtensionContext, window, workspace } from 'vscode'
 
 interface Definitions {
     [key: string]: string
@@ -10,48 +9,26 @@ export class Dictionary {
     private definitionsFromComments: Definitions = {};
     private definitions: Definitions = {};
 
-    constructor(fileText?: string) {
+    constructor(obj: Definitions, fileText?: string) {
 
         // Initialize definitions
         this.definitionsFromComments = (fileText == undefined) ? {} : this._refreshDefinitionsFromComments(fileText);
-        //this.definitionsFromSettings = this._refreshDefinitionsFromSettings();
+        this.definitionsFromSettings = this._refreshDefinitionsFromSettings(obj);
         this.definitions = this.mergeDefinitions();
     }
-
-
-    // public register(context: ExtensionContext): void {
-        
-    //     // Register a function to parse comments when the active editor changes
-    //     context.subscriptions.push(
-    //         window.onDidChangeActiveTextEditor(event => {
-    //             if (event != undefined && event.document.languageId != 'gcode') {
-    //                 this.refreshDefinitionsFromComments(event.document.getText());
-    //             }
-    //         })
-    //     );
-
-    //     // Register a function to read definitions from settings when any config file is changed
-    //     context.subscriptions.push(
-    //         workspace.onDidChangeConfiguration(event => {
-    //             if (event.affectsConfiguration('gcode.definitions')) {
-    //                 this.refreshDefinitionsFromSettings();
-    //             }
-    //         })
-    //     );
-    // }
 
     public lookup(code: string){
         const removeLeadingZeros = (code: string) => code.substring(0,1) + parseInt(code.substring(1)).toString();
         return this.definitions[removeLeadingZeros(code)];
     }
 
-    private refreshDefinitionsFromComments(fileText: string) {
+    public refreshDefinitionsFromComments(fileText: string) {
         this.definitionsFromComments = this._refreshDefinitionsFromComments(fileText);
         this.definitions = this.mergeDefinitions();
     }
 
-    private refreshDefinitionsFromSettings() {
-        this.definitionsFromSettings = this._refreshDefinitionsFromSettings();
+    public refreshDefinitionsFromSettings(obj: Definitions) {
+        this.definitionsFromSettings = this._refreshDefinitionsFromSettings(obj);
         this.definitions = this.mergeDefinitions();
     }
 
@@ -80,8 +57,7 @@ export class Dictionary {
 
     }
 
-    private _refreshDefinitionsFromSettings() {
-        let obj = JSON.parse(JSON.stringify(workspace.getConfiguration('gcode.definitions')));
+    private _refreshDefinitionsFromSettings(obj: Definitions) {
         return this.removeLeadingZerosFromKeys(obj);
     }
 

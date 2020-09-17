@@ -1,4 +1,4 @@
-import { ExtensionContext } from 'vscode';
+import { ExtensionContext, languages, workspace, window } from 'vscode';
 import * as commands from './commands'
 import * as hoverProvider from './hoverProvider'
 

@@ -72,7 +72,7 @@
     },
     "scripts": {
         "compile": "tsc",
-        "test": "ts-mocha --reporter=list './test/*.ts'"
+        "test": "ts-mocha './test/*.ts'"
     },
     "devDependencies": {
         "@types/chai": "^4.2.12",
