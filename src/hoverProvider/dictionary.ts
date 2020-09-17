@@ -40,7 +40,7 @@ export class Dictionary {
         
         function parse(comments: string[]): Definitions {
             // Change first and last characters from parens to double-quotes
-            comments = comments.map(comment => '"' + comment.substr(1, comment.length - 2) + '"');
+            comments = comments.map(comment => '"' + comment.substr(1, comment.length - 2).trim() + '"');
             // Ensure key value seperator is a colon, add inner quotes
             comments = comments.map(comment => comment.replace(/\s*[:=]\s*/, '": "'));
             // Finish converting comment to a JSON string

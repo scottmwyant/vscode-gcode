@@ -1,10 +1,32 @@
-import { Dictionary } from '../src/hoverProvider/Dictionary';
 import { assert } from 'chai';
+import { Dictionary } from '../src/hoverProvider/dictionary';
 
-describe('describe the test', function(){
-    it('returns "true"', function(){
-        const text = "(G04 = Dwell)"
-        const dict = new Dictionary({"M1": "Program stop, optional"}, text);
-        assert.isTrue(dict.lookup("G4")=="Dwell");
-    })
+describe('Describe ability to parse comments in hoverProvider/dictionary.ts', function(){
+    const data = [
+        {
+            "text": "(G04 = Dwell)",
+            "obj": {"M1": "Program stop, optional"},
+            "find": "G4",
+            "expected": "Dwell"
+        },
+        {
+            "text": "(G04: Dwell)",
+            "obj": {"M1": "Program stop, optional"},
+            "find": "G4",
+            "expected": "Dwell"
+        },
+        {
+            "text": "( G03: Feed, circular interpolation, counter-clockwise )",
+            "obj": {"M1": "Program stop, optional"},
+            "find": "G3",
+            "expected": "Feed, circular interpolation, counter-clockwise"
+        }
+    ].forEach(item => {
+
+        it(item.text, function(){
+            assert.equal(new Dictionary(item.obj, item.text).lookup(item.find), item.expected);
+        });
+
+    });
+
 });
