@@ -20,6 +20,12 @@ describe('Describe ability to parse comments in hoverProvider/dictionary.ts', fu
             "obj": {"M1": "Program stop, optional"},
             "find": "G3",
             "expected": "Feed, circular interpolation, counter-clockwise"
+        },
+        {
+            "text": "G116 T=VC33 ( VC33 = Tool number)",
+            "obj": {"M1": "Program stop, optional"},
+            "find": "VC33",
+            "expected": "Tool number"
         }
     ].forEach(item => {
 

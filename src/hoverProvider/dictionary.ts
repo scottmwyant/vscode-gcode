@@ -18,8 +18,7 @@ export class Dictionary {
     }
 
     public lookup(code: string){
-        const removeLeadingZeros = (code: string) => code.substring(0,1) + parseInt(code.substring(1)).toString();
-        return this.definitions[removeLeadingZeros(code)];
+        return this.definitions[this.removeLeadingZeros(code)];
     }
 
     public refreshDefinitionsFromComments(fileText: string) {
@@ -30,6 +29,13 @@ export class Dictionary {
     public refreshDefinitionsFromSettings(obj: Definitions) {
         this.definitionsFromSettings = this._refreshDefinitionsFromSettings(obj);
         this.definitions = this.mergeDefinitions();
+    }
+
+    private removeLeadingZeros(code: string) {        
+        // Assumes every code is alphanumeric and letters come first, numbers come last
+        const letters = code.replace(/\d/g, '');
+        const numbers = parseInt(code.replace(/[A-Z]/g, '')).toString();
+        return letters+numbers;
     }
 
     private mergeDefinitions() {
@@ -63,17 +69,12 @@ export class Dictionary {
 
     private removeLeadingZerosFromKeys(obj: Definitions): Definitions {
         Object.keys(obj).forEach(key => {
-            let cleanKey = key;
-            const prefix = key.replace(/\d+/g, '');
-            if ((key.length > prefix.length) && key.startsWith(prefix)) {
-                const suffix = key.substr(prefix.length);
-                cleanKey = prefix + parseInt(suffix);
-                if (cleanKey.length < key.length && obj[cleanKey] == undefined) {
-                    obj[cleanKey] = obj[key];
-                    delete obj[key];
-                }
+            let cleanKey = this.removeLeadingZeros(key);
+            if (cleanKey.length < key.length && obj[cleanKey] == undefined) {
+                obj[cleanKey] = obj[key];
+                delete obj[key];
             }
-        })
+        });
         return obj
     }
 }
