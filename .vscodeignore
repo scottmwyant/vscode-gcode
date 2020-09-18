@@ -1,4 +1,8 @@
-.vscode/**
+# Ignore specific files
 .gitignore
-src/**
 tsconfig.json
+
+# Ignore top level folders
+.vscode/**
+src/**
+test/**
