@@ -71,10 +71,12 @@
         }
     },
     "scripts": {
-        "compile": "tsc"
+        "compile": "tsc",
+        "docsify": "docsify serve ./docs"
     },
     "devDependencies": {
         "@types/vscode": "^1.46.0",
+        "docsify-cli": "^4.4.1",
         "typescript": "^3.8.0"
     }
 }
