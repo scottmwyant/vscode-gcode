@@ -1,6 +1,6 @@
 {
     "name": "gcode",
-    "displayName": "gcode",
+    "displayName": "G-Code Language Basics",
     "description": "gcode",
     "version": "0.0.1",
     "engines": {
