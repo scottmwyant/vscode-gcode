@@ -12,22 +12,26 @@
       text-align: center;
       margin-bottom: 75px;
     }
+    article.markdown-section h1 { 
+      margin-top: 2.5rem;
+    }
+    h1#user-guide{
+      margin-top: 0;
+    }
+    section.content {
+      padding-top: 30px;
+    }
   </style>
 </head>
 <body>
-  <nav style="margin-right: 80px">
-    <a href="/#/">about</a>
-    <a href="/#/release-notes">release notes</a>
-  </nav>
   <div id="app"></div>
   <script>
     window.$docsify = {
       name: 'G-code',
       repo: 'scottmwyant/gcode',
       themeColor: "#494e54",
-      coverpage: true,
-      loadNavbar: true,
-      basePath: "https://scottmwyant.github.io/gcode/"
+      coverpage: 'cover.md',
+      homepage: 'user-guide.md'
     }
   </script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
