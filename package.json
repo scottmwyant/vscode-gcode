@@ -49,6 +49,11 @@
                 "command": "gcode.removeLineNumbers",
                 "title": "Line Numbers (Remove)",
                 "category": "G-Code"
+            },
+            {
+                "command": "gcode.tailorTextMateGrammar",
+                "title": "Colorize",
+                "category": "G-Code"
             }
         ],
         "configuration": {
