@@ -1,6 +1,7 @@
 import { commands, ExtensionContext } from 'vscode';
 import { addLineNumbers, removeLineNumbers } from './lineNumbers';
 import { toggleComment } from './toggleComment';
+import { tailorTextMateGrammar } from '../grammar'
 
 export function register(context: ExtensionContext){
     
@@ -10,7 +11,8 @@ export function register(context: ExtensionContext){
   const gcodeCommands = [
     addLineNumbers,
     removeLineNumbers,
-    toggleComment
+    toggleComment,
+    tailorTextMateGrammar
   ];
 
   gcodeCommands.forEach(cmd => {

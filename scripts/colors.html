@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colors</title>
+  <style>
+    section {
+      padding: 30px;
+      border: thin solid gray;
+      border-radius: 25px;
+      margin-bottom: 50px;
+    }
+
+    p {
+      margin: 20px 30px 20px 30px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script src="themeData.js"></script>
+  <script>
+
+    myThemeData.forEach(theme => {
+
+      const body = document.getElementsByTagName('body')[0];
+      body.appendChild(document.createElement('h2')).textContent = theme.name;
+      
+      const section = body.appendChild(document.createElement('section'));
+      section.style.background = theme.editorBackground;
+
+      // Create a set (array of distinct values) of colors then walk through the set
+      new Set(theme.tokenColors.map(item => item.settings.foreground)).forEach((color) => {
+
+        // Filter the tokens down to just the ones that use this color.  These tokens will all be
+        // put into the document inside a <p> element, each token as a <span> element.
+        const tokens = theme.tokenColors.filter(token => token.settings.foreground == color);
+
+        const spanElements = tokens.map(token => {
+          
+          // Start by creating a new span element
+          const rtn = document.createElement('span');
+          
+          // Use the scope for the textContent
+          rtn.textContent = Array.isArray(token.scope) ? token.scope.join(' | ') : token.scope.replace(/\,\s*/g, ' | ');
+
+          // See what's under the fontStyle key, apply inline CSS stylings apprporiately
+          const fontStyle = token.settings.fontStyle == undefined ? '' : token.settings.fontStyle;
+          if(fontStyle.includes('bold')){ rtn.style.fontWeight = 'bolder'; }
+          if(fontStyle.includes('italic')){ rtn.style.fontStyle = 'italic'; }
+          if(fontStyle.includes('underline')){ rtn.style.textDecoration = 'underline'; }
+
+          return rtn;
+        });
+
+        const p = section.appendChild(document.createElement('p'));
+        p.style.color = color;
+        p.innerHTML = spanElements.map(span => span.outerHTML).join(' | ');
+
+      });
+
+    })
+
+  </script>
+</body>
+
+</html>

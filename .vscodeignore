@@ -1,4 +1,9 @@
-.vscode/**
+
+# Top level files
 .gitignore
-src/**
 tsconfig.json
+
+# Top level folders
+.vscode/**
+src/**
+scripts/**
