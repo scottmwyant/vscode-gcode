@@ -92,7 +92,7 @@
         }
     },
     "scripts": {
-        "compile": "tsc"
+        "compile": "tsc --project src"
     },
     "devDependencies": {
         "@types/node": "^13.13.12",
