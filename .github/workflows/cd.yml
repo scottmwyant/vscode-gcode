@@ -1,0 +1,77 @@
+name: CD
+on:
+  create:
+    tag:
+      - v\d+\.\d+\.\d+(\.[\w\d-]+)?
+env: 
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  VSCE_PAT: ${{secrets.VSCE_PAT}}
+
+jobs:
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout source code
+        uses: actions/checkout@v2
+
+        # Make sure the version number in the tag matches the version in package.json
+      - name: match-tag-to-package-version
+        uses: geritol/match-tag-to-package-version@0.0.2 # https://github.com/geritol/match-tag-to-package-version
+        env:
+          TAG_PREFIX: refs/tags/v
+
+        # Parse the version number from the new tag
+      - name: Get version
+        id: semver
+        uses: LykkeBusiness/get-semver-from-tag-action@v1.0.2
+        with:
+          tag: ${{ github.ref }}
+
+        # Update the 'latest' tag
+      - name: Tag latest
+        uses: richardsimko/update-tag@v1
+        with:
+          tag_name: latest
+
+        # Install deps, compile, and pack into .vsix
+      - name: Build
+        run: |
+          npm install
+          npx tsc --project src
+          npm install --no-save vsce
+          npx vsce --version
+          npx vsce package --out ./gcode.vsix
+
+        # Read the changelog entry corresponding to the new version number
+      - name: Read entry from changelog
+        uses: mindsers/changelog-reader-action@v2 # https://github.com/mindsers/changelog-reader-action
+        id: changelog_reader
+        with:
+          version: ${{ steps.semver.outputs.prefixed }}
+     
+        # Create a new release on GitHub
+      - name: Create a release
+        uses: actions/create-release@v1 # https://github.com/actions/create-release/
+        id: create_release
+        with:
+          tag_name: ${{ steps.semver.outputs.prefixed }}
+          release_name: Release ${{ steps.semver.outputs.prefixed }}
+          body: ${{ steps.changelog_reader.outputs.changes }}
+          draft: false
+          prerelease: false
+
+        # Upload the vsix to the release
+      - name: Attach vsix
+        uses: actions/upload-release-asset@v1 # https://github.com/actions/upload-release-asset
+        id: upload-release-asset 
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./gcode.vsix
+          asset_name: gcode-${{ steps.semver.outputs.prefixed }}.vsix
+          asset_content_type: application/vsix
+      
+         # Publish the .vsix to the marketplace
+      - name: Publish to marketplace
+        run: npx vsce publish --packagePath gcode.vsix
