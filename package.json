@@ -1,14 +1,30 @@
 {
+    "publisher": "vscode-gcode",
     "name": "gcode",
-    "displayName": "gcode",
-    "description": "gcode",
+    "displayName": "G-Code",
+    "description": "The premier Visual Studio Code extension for G-Code",
     "version": "0.0.1",
+    "preview": true,
+    "author": {
+        "name": "Scott M. Wyant",
+        "email": "29161635+scottmwyant@users.noreply.github.com",
+        "url": "https://github.com/scottmwyant"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/scottmwyant/vscode-gcode"
+    },
+    "bugs": {
+        "url": "https://github.com/scottmwyant/vscode-gcode/issues"
+    },
+    "license": "MIT",
     "engines": {
         "vscode": "^1.46.0"
     },
     "categories": [
         "Programming Languages"
     ],
+    "icon": "icon.png",
     "activationEvents": [
         "onLanguage:gcode"
     ],
@@ -79,6 +95,7 @@
         "compile": "tsc"
     },
     "devDependencies": {
+        "@types/node": "^13.13.12",
         "@types/vscode": "^1.46.0",
         "typescript": "^3.8.0"
     }
