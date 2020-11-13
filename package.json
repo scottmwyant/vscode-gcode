@@ -24,7 +24,7 @@
     "categories": [
         "Programming Languages"
     ],
-    "icon": "icon.png",
+    "icon": "assets/icon.png",
     "activationEvents": [
         "onLanguage:gcode"
     ],
@@ -40,14 +40,14 @@
                 "extensions": [
                     ".nc"
                 ],
-                "configuration": "./syntaxes/language-configuration.json"
+                "configuration": "./assets/language-configuration.json"
             }
         ],
         "grammars": [
             {
                 "language": "gcode",
                 "scopeName": "source.gcode",
-                "path": "./syntaxes/gcode.tmLanguage.json"
+                "path": "./assets/gcode.tmLanguage.json"
             }
         ],
         "commands": [
