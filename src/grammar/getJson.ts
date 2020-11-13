@@ -1,5 +1,5 @@
-import * as template from './gcode.tmLanguage.json'
-import * as scopes from './scopes.json'
+import { default as template } from './gcode.tmLanguage.json'
+import { default as scopes } from './scopes.json'
 
 export function getJson(themeName: string) {
     const targetScopes = (scopes as any)[themeName];
