@@ -3,7 +3,7 @@ import { getJson, isThemeSupported } from './getJson'
 import { join } from 'path'
 import { readFileSync, writeFile } from 'fs'
 
-const grammarFile = join(__dirname, '..', '..', 'syntaxes', 'gcode.tmLanguage.json');
+const grammarFile = join(__dirname, '..', '..', 'assets', 'gcode.tmLanguage.json');
 
 export function register(context: ExtensionContext) {
 
