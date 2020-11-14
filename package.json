@@ -1,0 +1,102 @@
+{
+    "publisher": "vscode-gcode",
+    "name": "gcode",
+    "displayName": "G-Code",
+    "description": "The premier Visual Studio Code extension for G-Code",
+    "version": "0.1.0",
+    "preview": true,
+    "author": {
+        "name": "Scott M. Wyant",
+        "email": "29161635+scottmwyant@users.noreply.github.com",
+        "url": "https://github.com/scottmwyant"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/scottmwyant/vscode-gcode"
+    },
+    "bugs": {
+        "url": "https://github.com/scottmwyant/vscode-gcode/issues"
+    },
+    "license": "MIT",
+    "engines": {
+        "vscode": "^1.46.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "icon": "assets/icon.png",
+    "activationEvents": [
+        "onLanguage:gcode"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "languages": [
+            {
+                "id": "gcode",
+                "aliases": [
+                    "G-Code",
+                    "gcode"
+                ],
+                "extensions": [
+                    ".nc"
+                ],
+                "configuration": "./assets/language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "gcode",
+                "scopeName": "source.gcode",
+                "path": "./assets/gcode.tmLanguage.json"
+            }
+        ],
+        "commands": [
+            {
+                "command": "gcode.toggleComment",
+                "title": "Toggle Comment",
+                "category": "G-Code"
+            },
+            {
+                "command": "gcode.addLineNumbers",
+                "title": "Line Numbers (Add/Update)",
+                "category": "G-Code"
+            },
+            {
+                "command": "gcode.removeLineNumbers",
+                "title": "Line Numbers (Remove)",
+                "category": "G-Code"
+            },
+            {
+                "command": "gcode.tailorTextMateGrammar",
+                "title": "Colorize",
+                "category": "G-Code"
+            }
+        ],
+        "configuration": {
+            "title": "G-Code",
+            "properties": {
+                "gcode.definitions": {
+                    "description": "Definitions for G and M codes.",
+                    "type": "object",
+                    "default": {
+                        "G0": "Rapid, linear interpolation",
+                        "G1": "Feed, linear interpolation",
+                        "G2": "Feed, circular interpolation, clockwise",
+                        "G3": "Feed, circular interpolation, counter-clockwise",
+                        "M3": "Spindle start, clockwise",
+                        "M4": "Spindle start, counter-clockwise",
+                        "M5": "Spindle stop"
+                    }
+                }
+            }
+        }
+    },
+    "scripts": {
+        "compile": "tsc --project src"
+    },
+    "devDependencies": {
+        "@types/node": "^13.13.12",
+        "@types/vscode": "^1.46.0",
+        "typescript": "^3.8.0"
+    }
+}

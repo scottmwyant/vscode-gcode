@@ -1,0 +1,8 @@
+# References for .gitignore files
+https://www.atlassian.com/git/tutorials/saving-changes/gitignore
+
+# Ignore node packages
+node_modules/
+
+# Ignore compiled javascript files
+out/

@@ -1,0 +1,189 @@
+{
+    "Visual Studio Light": {
+        "f": "token.info-token",
+        "m": "markup.bold",
+        "n": "meta.embedded",
+        "s": "token.info-token",
+        "t": "token.info-token",
+        "x": "variable.css",
+        "y": "comment",
+        "z": "constant.language",
+        "comment": "meta.embedded"
+    },
+    "Default Light+": {
+        "f": "token.info-token",
+        "m": "markup.bold",
+        "n": "meta.embedded",
+        "s": "token.info-token",
+        "t": "token.info-token",
+        "x": "variable.css",
+        "y": "constant.numeric",
+        "z": "constant.language",
+        "comment": "meta.embedded"
+    },
+    "Quiet Light": {
+        "f": "entity.name.type",
+        "m": "token.warn-token",
+        "n": "keyword.operator",
+        "s": "entity.name.type",
+        "t": "entity.name.type",
+        "x": "token.error-token",
+        "y": "string",
+        "z": "keyword",
+        "comment": "keyword.operator"
+    },
+    "Solarized Light": {
+        "f": "constant.numeric",
+        "m": "constant.language",
+        "n": "entity.other.attribute-name",
+        "s": "constant.numeric",
+        "t": "constant.numeric",
+        "x": "string.regexp",
+        "y": "markup.inserted",
+        "z": "token.info-token",
+        "comment": "entity.other.attribute-name"
+    },
+    "GitHub Light": {
+        "f": "entity",
+        "m": "variable",
+        "n": "comment",
+        "s": "entity",
+        "t": "entity",
+        "x": "keyword",
+        "y": "entity.name.tag",
+        "z": "constant",
+        "comment": "comment"
+    },
+    "Abyss": {
+        "f": "constant.numeric",
+        "m": "token.warn-token",
+        "n": "keyword",
+        "s": "constant.numeric",
+        "t": "constant.numeric",
+        "x": "markup.deleted",
+        "y": "string",
+        "z": "token.info-token",
+        "comment": "keyword"
+    },
+    "Visual Studio Dark": {
+        "f": "string",
+        "m": "entity.name.tag.css",
+        "n": "punctuation.definition.tag",
+        "s": "string",
+        "t": "string",
+        "x": "string.regexp",
+        "y": "comment",
+        "z": "constant.language",
+        "comment": "punctuation.definition.tag"
+    },
+    "Default Dark+": {
+        "f": "string",
+        "m": "constant.character.escape",
+        "n": "punctuation.definition.tag",
+        "s": "string",
+        "t": "string",
+        "x": "string.regexp",
+        "y": "comment",
+        "z": "constant.language",
+        "comment": "punctuation.definition.tag"
+    },
+    "Kimbie Dark": {
+        "f": "token.debug-token",
+        "m": "constant",
+        "n": "comment",
+        "s": "token.debug-token",
+        "t": "token.debug-token",
+        "x": "variable",
+        "y": "entity.name.function",
+        "z": "token.info-token",
+        "comment": "comment"
+    },
+    "Monokai": {
+        "f": "constant.numeric",
+        "m": "string",
+        "n": "comment",
+        "s": "constant.numeric",
+        "t": "constant.numeric",
+        "x": "keyword",
+        "y": "entity.name.function",
+        "z": "support.function",
+        "comment": "comment"
+    },
+    "Monokai Dimmed": {
+        "f": "token.debug-token",
+        "m": "meta.tag",
+        "n": "comment",
+        "s": "token.debug-token",
+        "t": "token.debug-token",
+        "x": "support",
+        "y": "markup.inserted",
+        "z": "constant.character",
+        "comment": "comment"
+    },
+    "Red": {
+        "f": "token.debug-token",
+        "m": "string.regexp",
+        "n": "constant",
+        "s": "token.debug-token",
+        "t": "token.debug-token",
+        "x": "support.constant",
+        "y": "support",
+        "z": "token.info-token",
+        "comment": "comment"
+    },
+    "Solarized Dark": {
+        "f": "constant.numeric",
+        "m": "constant.language",
+        "n": "punctuation.definition.tag",
+        "s": "constant.numeric",
+        "t": "constant.numeric",
+        "x": "entity.name.class",
+        "y": "markup.inserted",
+        "z": "variable.language",
+        "comment": "punctuation.definition.tag"
+    },
+    "Tomorrow Night Blue": {
+        "f": "token.debug-token",
+        "m": "constant.numeric",
+        "n": "comment",
+        "s": "token.debug-token",
+        "t": "token.debug-token",
+        "x": "variable",
+        "y": "string",
+        "z": "entity.name.function",
+        "comment": "comment"
+    },
+    "GitHub Dark": {
+        "f": "entity",
+        "m": "variable",
+        "n": "comment",
+        "s": "entity",
+        "t": "entity",
+        "x": "keyword",
+        "y": "entity.name.tag",
+        "z": "constant",
+        "comment": "comment"
+    },
+    "One Dark Pro": {
+        "f": "keyword.operator.new",
+        "m": "entity.name.class",
+        "n": "comment",
+        "s": "keyword.operator.new",
+        "t": "keyword.operator.new",
+        "x": "variable",
+        "y": "string",
+        "z": "variable.function",
+        "comment": "comment"
+    },
+    "Default High Contrast": {
+        "f": "keyword.control",
+        "m": "entity.name.tag.css",
+        "n": "variable.css",
+        "s": "keyword.control",
+        "t": "keyword.control",
+        "x": "invalid",
+        "y": "constant.numeric",
+        "z": "constant.language",
+        "comment": "variable.css"
+    }
+}
