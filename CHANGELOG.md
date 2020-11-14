@@ -4,6 +4,12 @@ All notable changes will be documented in this file.
 
 Contributors: This document uses style guidelines from [Keep A Changelog](http://keepachangelog.com/).
 
+## [v0.1.1] - 2020-11-13
+
+### Chagned
+
+The list of file extensions should have been expanded before the last release.  See complete list of supported file extensions in package.json at the root of the repository.
+
 ## [v0.1.0] - 2020-11-13
 
 Merge dev branch into master.  This is the initial release.  Previous version numbers were simply used to test the GitHub Actions continuous deployment workflow.  Since this is the intial release, I won't go into much detail here, I'll just list the featuers and put the details the project's README.
