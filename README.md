@@ -1,65 +1,103 @@
-# gcode README
+<br/><p align="center"><img src="https://user-images.githubusercontent.com/29161635/93551441-de870a00-f93b-11ea-82a3-48c360d2f732.png" alt="icon" width="200px"></p><br/>
 
-This is the README for your extension "gcode". After writing up a brief description, we recommend including the following sections.
+# [G-Code for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vscode-gcode.gcode)
 
-## Features
+**The premier Visual Studio Code extension for G-Code**
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+<br>
 
-For example if there is an image subfolder under your extension project workspace:
+<!--Badges from https://shields.io-->
+![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/vscode-gcode.gcode) ![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/vscode-gcode.gcode?color=%23f5f5f5&logo=installs) ![Visual Studio Marketplace Rating](https://img.shields.io/visual-studio-marketplace/r/vscode-gcode.gcode)
 
-\!\[feature X\]\(images/feature-x.png\)
+## ✨ Features
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+### Adaptive Syntax Highlighting
 
-## Requirements
+**<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> `>G-Code: Adapt to current theme`**
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+<p align="center"><img src="https://user-images.githubusercontent.com/29161635/96535493-f49c2900-125f-11eb-9e03-b395d231b82d.gif" alt="icon" height="400px" width="500px"></p>
 
-## Extension Settings
+CAD/CAM packages typically show the X-axis in red, the Y-axis in green, and the Z-Axis in blue. The G-Code extension follows that pattern.  The adaptive syntax feature allows you to choose any of the supproted themes and get that familiar colorization.  G-Code supports all of the themes that ship with VS Code, plus the [GitHub theme](https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme) and [OneDark-Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme).
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+- When VS Code starts and the extension activates, it will check the active theme and if the extension's syntax highlighting isn't already tailored to that theme, you will be prompted to allow the extension to rewrite the files that style the code.
 
-For example:
+- Should you miss the prompt, you can use the `G-Code: Adapt to current theme` command to force the extension to adapt to the theme you're using (as long as it's supported).
 
-This extension contributes the following settings:
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+### On-Hover Definitions
 
-## Known Issues
+<p align="center"><img src="https://user-images.githubusercontent.com/29161635/98761008-7cc6a780-23a2-11eb-819c-2f8287e03320.gif" alt="icon" height="400px" width="500px"></p>
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+You no longer need to memorize dozens of obscure G and M codes!  The G-Code extension includes a mechanism for you to *provide your own definitions* for any number of codes.  Definitions can even be provided *inline* with the code.
 
-## Release Notes
+#### Using VS Code settings
 
-Users appreciate release notes as you update your extension.
+Share definitions across multiple programs using VS Code's settings files.  Take a look at [VS Code Docs - User and Workspace Settings](https://code.visualstudio.com/docs/getstarted/settings) if you're not familiar VS Code configuration.
 
-### 1.0.0
+You need to add a `gcode.definitions` key to your settings.json file (user settings, workspace settings, or both).  Here's an example of what it might look like:
 
-Initial release of ...
+```json
+"gcode.definitions": {
+    "G90": "Positioning, absolute (modal)",
+    "G91": "Positioning, relative (modal)",
+    "M8": "Coolant On, External to Spindle",
+    "M9": "Coolant Off",
+    "M51": "Coolant On, Internal to Spindle",
+}
+```
 
-### 1.0.1
+#### Using inline definitions
 
-Fixed issue #.
+An inline definition is a comment in your code that matches the following format.  An inline definition has a `code` and a `meaning` seperated by `:` or `=`.  There may be whitespace on either side of the seperator.  The text on the right side of the seperator will show up as hover text in that file.  See some examples of inline definitions below.  
 
-### 1.1.0
+Note that after you add inline definitions to a file, they won't show up in a hover until you activate the file agian.  Either close that file and re-open it, or activate another file then switch back.  This prevents the extension from needing to continuously scan your file for definitions.
 
-Added features X, Y, and Z.
+Examples of inline definitions:
 
------------------------------------------------------------------------------------------------------------
+```
+(G4:DWELL)
+(G4: THIS IS A DWELL)
+(G4 = DWELL, USE P TO SPECIFY TIME)
+```
 
-## Working with Markdown
+#### A word on leading zeros
 
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+When providing definitions, regardless of which method you use, don't use leading zeros. Provide a definition for `G1` not `G01`.  When you hover over a code like `G01` the extension ignores the leading zero and returns a definition for `G1`.
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
+### Line Numbering
 
-### For more information
+**<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> `>G-Code: Line Numbers (Add/Update)`**
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+**<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> `>G-Code: Line Numbers (Remove)`**
 
-**Enjoy!**
+<p align="center"><img src="https://user-images.githubusercontent.com/29161635/99023619-f392aa80-2532-11eb-8328-2f594652a3c4.gif" alt="icon" height="400px" width="500px"></p>
+
+Addding, updating, or removing line numbers are not tasks you should ever need to do manually.  A robust G-Code editor should make this easy as possible so you can focus on more important things.  The G-Code extension provides commands to carry out these tasks on the active file.  Don't forget that you can map commands to a keyboard shortcut of your choice.  See [Key Bindings for Visual Studio Code](https://code.visualstudio.com/docs/getstarted/keybindings).
+
+### Toggle Comments
+
+**<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> `>G-Code: Toggle Comment`**
+
+<p align="center"><img src="https://user-images.githubusercontent.com/29161635/99023050-cf829980-2531-11eb-92be-b4516f3b4e95.gif" alt="icon" height="400px" width="500px"></p>
+
+VS Code ships with the ability to toggle comments.  The built-in feature works by modifying one or more characters at the beginning of each selected line.  Since it only affects the beginning of the line, it doesn't work for G-Code comments that need to be (in parentheses).  The G-Code extension provides a command that will toggle parenthesis at the start and end of each selected line.  
+
+## 📓 Release Notes
+
+Documentation pertaining to a specific release can be found under [releases](https://github.com/scottmwyant/vscode-gcode/releases), or in the project's [changelog](./CHANGELOG.md).
+
+## 💻 Developers
+
+### VS Code Token Styles
+
+Early on I realized I needed a way to see how each VS Code theme styles the various language tokens.  My approach was to get data for each theme by using the `Developer: Generate Color Theme From Current Settings` command then use that data to render HTML.  Since that work may be intersting outside of this project, I chose to save it in [this gist](https://gist.github.com/scottmwyant/2dc64ff4315ba9e2c374fb329b399820).
+
+### Automated Deployment
+
+Maintainers, here's how to publish the extension to the marketplace:
+
+ 1. Put the new version number in [package.json](./package.json).  The version number must be higher than the version shown in the [marketplace](https://marketplace.visualstudio.com/items?itemName=vscode-gcode.gcode).  Reference [semver.org](https://semver.org/).
+ 2. Create an entry in the [changelog](./changelog.md).  Reference [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
+ 3. Push a new tag with the version number. The tag must start with a 'v', like this: `v1.2.3`.
+
+As long as these requirements are met, the CD workflow should go smoothly.  A release will be created, and the new version of the extension will be published to the marketplace (see [./github/workflows](./.github/workflows)).
