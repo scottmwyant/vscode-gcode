@@ -5,5 +5,4 @@
 # Top level folders
 .vscode/**
 src/**
-scripts/**
 .github/**
