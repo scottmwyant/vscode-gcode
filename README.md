@@ -80,7 +80,7 @@ Addding, updating, or removing line numbers are not tasks you should ever need t
 
 <p align="center"><img src="https://user-images.githubusercontent.com/29161635/99023050-cf829980-2531-11eb-92be-b4516f3b4e95.gif" alt="icon" height="400px" width="500px"></p>
 
-VS Code ships with the ability to toggle comments.  The built-in feature works by modifying one or more characters at the beginning of each selected line.  Since it only affects the beginning of the line, it doesn't work for G-Code comments that need to be (in parentheses).  The G-Code extension provides a command that will toggle parenthesis at the start and end of each selected line.  
+VS Code ships with the ability to toggle comments.  The built-in feature works by modifying one or more characters at the beginning of each selected line.  Since it only affects the beginning of the line, it doesn't work for G-Code comments that need to be (in parentheses).  The G-Code extension provides a command that will toggle parentheses at the start and end of each selected line.  
 
 ## 📓 Release Notes
 
