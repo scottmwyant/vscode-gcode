@@ -58,6 +58,7 @@
                     ".h",
                     ".hnc",
                     ".knc",
+                    ".lib",
                     ".maz",
                     ".min",
                     ".mpf",
@@ -82,6 +83,7 @@
                     ".sbc",
                     ".sbp",
                     ".spf",
+                    ".ssb",
                     ".t",
                     ".tap",
                     ".xpi"
