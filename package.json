@@ -114,7 +114,7 @@
             },
             {
                 "command": "gcode.tailorTextMateGrammar",
-                "title": "Colorize",
+                "title": "Adapt to Current Theme",
                 "category": "G-Code"
             }
         ],
