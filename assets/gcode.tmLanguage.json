@@ -124,7 +124,12 @@
         },
         {
           "name": "word.n.gcode",
-          "match": "^(N)(\\d{1,5}|[A-Z][A-Z0-9]{0,4})(?=\\s|$|\\()"
+          "match": "^(N)(\\d{1,5}|[A-Z][A-Z0-9]{0,4})(?=\\s|$|\\()",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.tag"
+            }
+          }
         }
       ]
     },
@@ -137,11 +142,21 @@
         },
         {
           "name": "word.m.gcode",
-          "match": "M(\\d{1,3}|(?=\\=))"
+          "match": "M(\\d{1,3}|(?=\\=))",
+          "captures": {
+            "0": {
+              "name": "constant.character.escape"
+            }
+          }
         },
         {
           "name": "word.t.gcode",
-          "match": "T(\\d+|(?=\\=))"
+          "match": "T(\\d+|(?=\\=))",
+          "captures": {
+            "0": {
+              "name": "string"
+            }
+          }
         }
       ]
     },
@@ -149,7 +164,7 @@
       "comment": "A single letter followed by a signed number, integer or decimal",
       "patterns": [
         {
-          "match": "([ABCEFIJKLPQRSUVWXYZ])([\\-\\+]?\\d+\\.?\\d*|\\.\\d+|(?=\\=))",
+          "match": "([ABCEFIJKLPQRSUVWXYZ])([\\-\\+]?\\d{0,6}\\.?\\d*|\\.\\d+|(?=\\=))",
           "captures": {
             "0": {
               "patterns": [
@@ -171,7 +186,12 @@
                 },
                 {
                   "name": "word.f.gcode",
-                  "match": "F.*"
+                  "match": "F.*",
+                  "captures": {
+                    "0": {
+                      "name": "string"
+                    }
+                  }
                 },
                 {
                   "name": "word.i.gcode",
@@ -203,7 +223,12 @@
                 },
                 {
                   "name": "word.s.gcode",
-                  "match": "S.*"
+                  "match": "S.*",
+                  "captures": {
+                    "0": {
+                      "name": "string"
+                    }
+                  }
                 },
                 {
                   "name": "word.u.gcode",
@@ -219,15 +244,30 @@
                 },
                 {
                   "name": "word.x.gcode",
-                  "match": "X.*"
+                  "match": "X.*",
+                  "captures": {
+                    "0": {
+                      "name": "string.regexp"
+                    }
+                  }
                 },
                 {
                   "name": "word.y.gcode",
-                  "match": "Y.*"
+                  "match": "Y.*",
+                  "captures": {
+                    "0": {
+                      "name": "comment"
+                    }
+                  }
                 },
                 {
                   "name": "word.z.gcode",
-                  "match": "Z.*"
+                  "match": "Z.*",
+                  "captures": {
+                    "0": {
+                      "name": "constant.language"
+                    }
+                  }
                 }
               ]
             }
@@ -240,12 +280,14 @@
         {
           "name": "comment.parens.gcode",
           "begin": "\\(",
-          "end": "\\)"
+          "end": "\\)",
+          "contentName": "punctuation.definition.tag"
         },
         {
           "name": "comment.semi-colon.gcode",
           "begin": "\\;",
-          "end": "$"
+          "end": "$",
+          "contentName": "punctuation.definition.tag"
         }
       ]
     }

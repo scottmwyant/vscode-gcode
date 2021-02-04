@@ -4,6 +4,16 @@ All notable changes will be documented in this file.
 
 Contributors: This document uses style guidelines from [Keep A Changelog](http://keepachangelog.com/).
 
+## [v0.1.2] - 2021-02-03
+
+### Changed
+
+- The syntax colorization that ships with the extension is now set to match VS Code's default theme.  Previously, the extension installed with the (unreasonable) expectation that the 'One Dark Pro' theme was being used.
+
+- Fixed a bug that would prevent a negative value with no number left of the decimal from being recognized as an axis address.  Now, words like `X-.3536` won't be overlooked.
+
+- The documentation provided with the extension, README.md, references a command `G-Code: Adapt to Current Theme`. The functionality described in the readme was intact but under a command with a different name. The command was renamed to match the documentation. 
+
 ## [v0.1.1] - 2020-11-13
 
 ### Chagned
