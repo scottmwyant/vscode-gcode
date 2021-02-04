@@ -164,7 +164,7 @@
         "comment": "A single letter followed by a signed number, integer or decimal",
         "patterns": [
           {
-            "match": "([ABCEFIJKLPQRSUVWXYZ])([\\-\\+]?\\d+\\.?\\d*|\\.\\d+|(?=\\=))",
+            "match": "([ABCEFIJKLPQRSUVWXYZ])([\\-\\+]?\\d{0,6}\\.?\\d*|\\.\\d+|(?=\\=))",
             "captures": {
               "0": {
                 "patterns": [
