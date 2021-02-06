@@ -50,7 +50,7 @@ You need to add a `gcode.definitions` key to your settings.json file (user setti
 
 An inline definition is a comment in your code that matches the following format.  An inline definition has a `code` and a `meaning` seperated by `:` or `=`.  There may be whitespace on either side of the seperator.  The text on the right side of the seperator will show up as hover text in that file.  See some examples of inline definitions below.  
 
-Note that after you add inline definitions to a file, they won't show up in a hover until you activate the file agian.  Either close that file and re-open it, or activate another file then switch back.  This prevents the extension from needing to continuously scan your file for definitions.
+Note that after you add inline definitions to a file, they won't show up in a hover until the file is saved.  This prevents the extension from needing to continuously scan your file for definitions.
 
 Examples of inline definitions:
 

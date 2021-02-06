@@ -3,7 +3,7 @@
     "name": "gcode",
     "displayName": "G-Code",
     "description": "The premier Visual Studio Code extension for G-Code",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "preview": true,
     "author": {
         "name": "Scott M. Wyant",
@@ -58,6 +58,7 @@
                     ".h",
                     ".hnc",
                     ".knc",
+                    ".lib",
                     ".maz",
                     ".min",
                     ".mpf",
@@ -82,6 +83,7 @@
                     ".sbc",
                     ".sbp",
                     ".spf",
+                    ".ssb",
                     ".t",
                     ".tap",
                     ".xpi"

@@ -1,8 +1,5 @@
 name: CD
-on:
-  create:
-    tag:
-      - v\d+\.\d+\.\d+(\.[\w\d-]+)?
+on: create
 env: 
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   VSCE_PAT: ${{secrets.VSCE_PAT}}
@@ -10,9 +7,10 @@ env:
 jobs:
 
   deploy:
+    if: (github.event.ref_type == 'tag') && (startsWith(github.ref, 'refs/tags/v'))
     runs-on: ubuntu-latest
     steps:
-
+      
       - name: Checkout source code
         uses: actions/checkout@v2
 

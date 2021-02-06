@@ -4,6 +4,16 @@ All notable changes will be documented in this file.
 
 Contributors: This document uses style guidelines from [Keep A Changelog](http://keepachangelog.com/).
 
+## [v0.1.3] - 2021-02-06
+
+### Changed
+
+- Add `.ssb` and `.lib` to the list of file extensions that activate the extension.
+
+- Apply XYZ colors to ABC, IJK, and UVW addresses, remove keyword theme color from being applied to code dealing with sub-routines.
+
+- Update inline definitions on save, rather than on document activate.
+
 ## [v0.1.2] - 2021-02-03
 
 ### Changed
