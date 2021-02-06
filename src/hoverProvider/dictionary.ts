@@ -13,8 +13,8 @@ export class Dictionary {
     constructor(fileText?: string) {
 
         // Initialize definitions
-        this.definitionsFromComments = (fileText == undefined) ? {} : this._refreshDefinitionsFromComments(fileText);
-        this.definitionsFromSettings = this._refreshDefinitionsFromSettings();
+        this.definitionsFromComments = (fileText == undefined) ? {} : this.refreshDefinitionsFromComments(fileText);
+        this.definitionsFromSettings = this.refreshDefinitionsFromSettings();
         this.definitions = this.mergeDefinitions();
     }
 
@@ -23,9 +23,10 @@ export class Dictionary {
         
         // Register a function to parse comments when the active editor changes
         context.subscriptions.push(
-            window.onDidChangeActiveTextEditor(event => {
-                if (event != undefined && event.document.languageId != 'gcode') {
-                    this.refreshDefinitionsFromComments(event.document.getText());
+            workspace.onWillSaveTextDocument(event => {
+                if (event.document.languageId == 'gcode') {
+                    this.definitionsFromComments = this.refreshDefinitionsFromComments(event.document.getText());
+                    this.definitions = this.mergeDefinitions();
                 }
             })
         );
@@ -34,7 +35,8 @@ export class Dictionary {
         context.subscriptions.push(
             workspace.onDidChangeConfiguration(event => {
                 if (event.affectsConfiguration('gcode.definitions')) {
-                    this.refreshDefinitionsFromSettings();
+                    this.definitionsFromSettings = this.refreshDefinitionsFromSettings();
+                    this.definitions = this.mergeDefinitions();
                 }
             })
         );
@@ -45,21 +47,11 @@ export class Dictionary {
         return this.definitions[removeLeadingZeros(code)];
     }
 
-    private refreshDefinitionsFromComments(fileText: string) {
-        this.definitionsFromComments = this._refreshDefinitionsFromComments(fileText);
-        this.definitions = this.mergeDefinitions();
-    }
-
-    private refreshDefinitionsFromSettings() {
-        this.definitionsFromSettings = this._refreshDefinitionsFromSettings();
-        this.definitions = this.mergeDefinitions();
-    }
-
     private mergeDefinitions() {
         return Object.assign({}, this.definitionsFromSettings, this.definitionsFromComments)
     }
 
-    private _refreshDefinitionsFromComments(fileText: string) {
+    private refreshDefinitionsFromComments(fileText: string) {
         
         function parse(comments: string[]): Definitions {
             // Change first and last characters from parens to double-quotes
@@ -77,10 +69,9 @@ export class Dictionary {
         const obj = (matches == null) ? {} : parse(matches);
         return this.removeLeadingZerosFromKeys(obj);
 
-
     }
 
-    private _refreshDefinitionsFromSettings() {
+    private refreshDefinitionsFromSettings() {
         let obj = JSON.parse(JSON.stringify(workspace.getConfiguration('gcode.definitions')));
         return this.removeLeadingZerosFromKeys(obj);
     }
