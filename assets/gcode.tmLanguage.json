@@ -170,15 +170,30 @@
               "patterns": [
                 {
                   "name": "word.a.gcode",
-                  "match": "A.*"
+                  "match": "A.*",
+                  "captures": {
+                    "0": {
+                      "name": "string.regexp"
+                    }
+                  }
                 },
                 {
                   "name": "word.b.gcode",
-                  "match": "B.*"
+                  "match": "B.*",
+                  "captures": {
+                    "0": {
+                      "name": "comment"
+                    }
+                  }
                 },
                 {
                   "name": "word.c.gcode",
-                  "match": "C.*"
+                  "match": "C.*",
+                  "captures": {
+                    "0": {
+                      "name": "constant.language"
+                    }
+                  }
                 },
                 {
                   "name": "word.e.gcode",
@@ -195,15 +210,30 @@
                 },
                 {
                   "name": "word.i.gcode",
-                  "match": "I.*"
+                  "match": "I.*",
+                  "captures": {
+                    "0": {
+                      "name": "string.regexp"
+                    }
+                  }
                 },
                 {
                   "name": "word.j.gcode",
-                  "match": "J.*"
+                  "match": "J.*",
+                  "captures": {
+                    "0": {
+                      "name": "comment"
+                    }
+                  }
                 },
                 {
                   "name": "word.k.gcode",
-                  "match": "K.*"
+                  "match": "K.*",
+                  "captures": {
+                    "0": {
+                      "name": "constant.language"
+                    }
+                  }
                 },
                 {
                   "name": "word.l.gcode",
@@ -232,15 +262,30 @@
                 },
                 {
                   "name": "word.u.gcode",
-                  "match": "U.*"
+                  "match": "U.*",
+                  "captures": {
+                    "0": {
+                      "name": "string.regexp"
+                    }
+                  }
                 },
                 {
                   "name": "word.v.gcode",
-                  "match": "V.*"
+                  "match": "V.*",
+                  "captures": {
+                    "0": {
+                      "name": "comment"
+                    }
+                  }
                 },
                 {
                   "name": "word.w.gcode",
-                  "match": "W.*"
+                  "match": "W.*",
+                  "captures": {
+                    "0": {
+                      "name": "constant.language"
+                    }
+                  }
                 },
                 {
                   "name": "word.x.gcode",
