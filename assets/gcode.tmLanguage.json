@@ -69,15 +69,15 @@
       "comment": "Keywords related to sub programs",
       "patterns": [
         {
-          "name": "keyword.subcall.gcode",
+          "name": "sub.call.gcode",
           "match": "CALL O([A-Z0-9]{1,4}).*"
         },
         {
-          "name": "keyword.sub.gcode",
+          "name": "sub.name.gcode",
           "match": "^O([A-Z0-9]{1,4})(?=\\s|$|\\()"
         },
         {
-          "name": "keyword.subend.gcode",
+          "name": "sub.end.gcode",
           "match": "^RTS$"
         }
       ]
