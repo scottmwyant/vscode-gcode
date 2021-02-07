@@ -4,8 +4,7 @@ import { Dictionary } from './dictionary'
 
 export function register(context: ExtensionContext) {
     
-    const dictionary = new Dictionary();
-    dictionary.register(context);
+    const dictionary = new Dictionary(context);
 
     context.subscriptions.push(
         languages.registerHoverProvider('gcode', new gcodeHoverProvider(dictionary))
