@@ -118,6 +118,11 @@
                 "command": "gcode.tailorTextMateGrammar",
                 "title": "Adapt to Current Theme",
                 "category": "G-Code"
+            },
+            {
+                "command": "gcode.showDictionary",
+                "title": "Show the dictionary",
+                "category": "G-Code"
             }
         ],
         "configuration": {
