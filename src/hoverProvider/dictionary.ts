@@ -60,18 +60,23 @@ export class Dictionary {
         }
 
         const mergeDefinitions = () => Object.assign({}, this.definitionsFromSettings, this.definitionsFromComments)
+        
+        const publish = () => {
+            this.definitions = mergeDefinitions()
+            if(this.panel != undefined) { this.panel.webview.html = getWebviewHtml() }
+        }
 
         // Initialize definitions
         this.definitionsFromComments = (fileText == undefined) ? {} : refreshDefinitionsFromComments(fileText);
         this.definitionsFromSettings = refreshDefinitionsFromSettings();
-        this.definitions = mergeDefinitions();
+        publish()
 
         // Register a function to parse comments when the active editor changes
         context.subscriptions.push(
             window.onDidChangeActiveTextEditor(event => {
                 if (event?.document.languageId == 'gcode') {
                     this.definitionsFromComments = refreshDefinitionsFromComments(event.document.getText());
-                    this.definitions = mergeDefinitions();
+                    publish()
                 }
             })
         );
@@ -81,7 +86,7 @@ export class Dictionary {
             workspace.onWillSaveTextDocument(event => {
                 if (event.document.languageId == 'gcode') {
                     this.definitionsFromComments = refreshDefinitionsFromComments(event.document.getText());
-                    this.definitions = mergeDefinitions();
+                    publish()
                 }
             })
         );
@@ -91,7 +96,7 @@ export class Dictionary {
             workspace.onDidChangeConfiguration(event => {
                 if (event.affectsConfiguration('gcode.definitions')) {
                     this.definitionsFromSettings = refreshDefinitionsFromSettings();
-                    this.definitions = mergeDefinitions();
+                    publish()
                 }
             })
         );
@@ -99,18 +104,18 @@ export class Dictionary {
         // Register a command to display the dictionary in a webview
         context.subscriptions.push(
             commands.registerCommand('gcode.showDictionary',  () => {
-                
+
                 // Create and show panel
                 if(this.panel != undefined) {
                     this.panel.reveal(ViewColumn.Beside)
                 }
                 else {
                     this.panel = window.createWebviewPanel(
-                    'gcodeDictionary',
-                    'G-Code Dictionary',
-                    ViewColumn.Beside,
-                    {}
-                );
+                        'gcodeDictionary',
+                        'G-Code Dictionary',
+                        ViewColumn.Beside,
+                        {}
+                    );
                     this.panel.onDidDispose(
                         () => { this.panel = undefined; },
                         undefined,
