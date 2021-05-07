@@ -1,4 +1,4 @@
-import { commands, ExtensionContext, ViewColumn, window, workspace } from 'vscode'
+import { commands, ExtensionContext, ViewColumn, WebviewPanel, window, workspace } from 'vscode'
 
 interface Definitions {
     [key: string]: string
@@ -9,6 +9,7 @@ export class Dictionary {
     private definitionsFromSettings: Definitions = {};
     private definitionsFromComments: Definitions = {};
     private definitions: Definitions = {};
+    private panel: WebviewPanel | undefined
 
     constructor(context: ExtensionContext) {
 
@@ -99,38 +100,35 @@ export class Dictionary {
         context.subscriptions.push(
             commands.registerCommand('gcode.showDictionary',  () => {
                 
-                const getContent = () => {
-
-                    const template = `<!DOCTYPE html>
-                  <html lang="en">
-                  <head>
-                      <meta charset="UTF-8">
-                      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                      <title>G-Code Dictionary</title>
-                  </head>
-                  <body></body>
-                  </html>`;
-                    
-                    
-                    const data = Object.keys(this.definitions).map(key => ({word: key, meaning: this.definitions[key]}))
-                    const html = (data.map(item => {
-                        return `<p><strong>${item.word}</strong> - ${item.meaning}</p>`
-                    })).sort().join('\n')
-                    return template.replace('<body></body>', `<body>${html}</body>`)
-                }
-
                 // Create and show panel
-                const panel = window.createWebviewPanel(
+                if(this.panel != undefined) {
+                    this.panel.reveal(ViewColumn.Beside)
+                }
+                else {
+                    this.panel = window.createWebviewPanel(
                     'gcodeDictionary',
                     'G-Code Dictionary',
                     ViewColumn.Beside,
                     {}
                 );
+                    this.panel.onDidDispose(
+                        () => { this.panel = undefined; },
+                        undefined,
+                        context.subscriptions
+                      );
+                }
 
                 // And set its HTML content
-                panel.webview.html = getContent();
+                this.panel.webview.html = getWebviewHtml();
             })
         )
+
+        const getWebviewHtml = () => {
+            const template = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>G-Code Dictionary</title></head><body></body></html>';
+            const data = Object.keys(this.definitions).map(key => ({word: key, meaning: this.definitions[key]}))
+            const html = (data.map(item => `<p><strong>${item.word}</strong> - ${item.meaning}</p>`)).sort().join('\n')
+            return template.replace('<body></body>', `<body>${html}</body>`)
+        }
 
     }
 
