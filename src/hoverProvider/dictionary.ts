@@ -71,38 +71,34 @@ export class Dictionary {
         this.definitionsFromSettings = refreshDefinitionsFromSettings();
         publish()
 
-        // Register a function to parse comments when the active editor changes
+        // Register event handlers
         context.subscriptions.push(
+
+            // Parse comments when the active editor changes
             window.onDidChangeActiveTextEditor(event => {
                 if (event?.document.languageId == 'gcode') {
                     this.definitionsFromComments = refreshDefinitionsFromComments(event.document.getText());
                     publish()
                 }
-            })
-        );
+            }),
 
-        // Register a function to parse comments when the document is saved
-        context.subscriptions.push(
+            // Parse comments when the document is saved
             workspace.onWillSaveTextDocument(event => {
                 if (event.document.languageId == 'gcode') {
                     this.definitionsFromComments = refreshDefinitionsFromComments(event.document.getText());
                     publish()
                 }
-            })
-        );
+            }),
 
-        // Register a function to read definitions from settings when any config file is changed
-        context.subscriptions.push(
+            // Read definitions from settings when any config file is changed
             workspace.onDidChangeConfiguration(event => {
                 if (event.affectsConfiguration('gcode.definitions')) {
                     this.definitionsFromSettings = refreshDefinitionsFromSettings();
                     publish()
                 }
-            })
-        );
+            }),
 
-        // Register a command to display the dictionary in a webview
-        context.subscriptions.push(
+            // Register a command to display the dictionary in a webview
             commands.registerCommand('gcode.showDictionary', () => {
 
                 // Create and show panel
@@ -126,6 +122,7 @@ export class Dictionary {
                 // And set its HTML content
                 this.panel.webview.html = getWebviewHtml();
             })
+            
         )
 
         const getWebviewHtml = () => {
