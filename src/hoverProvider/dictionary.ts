@@ -83,9 +83,9 @@ export class Dictionary {
             }),
 
             // Parse comments when the document is saved
-            workspace.onWillSaveTextDocument(event => {
-                if (event.document.languageId == 'gcode') {
-                    this.definitionsFromComments = refreshDefinitionsFromComments(event.document.getText());
+            workspace.onDidSaveTextDocument(document => {
+                if (document.languageId == 'gcode') {
+                    this.definitionsFromComments = refreshDefinitionsFromComments(document.getText());
                     publish()
                 }
             }),
