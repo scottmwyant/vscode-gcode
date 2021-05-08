@@ -127,8 +127,32 @@ export class Dictionary {
 
         const getWebviewHtml = () => {
             const template = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>G-Code Dictionary</title></head><body></body></html>';
-            const data = Object.keys(this.definitions).map(key => ({ word: key, meaning: this.definitions[key] }))
-            const html = (data.map(item => `<p><strong>${item.word}</strong> - ${item.meaning}</p>`)).sort().join('\n')
+            
+            const keys = Object.keys(this.definitions).sort(function(a, b){
+                
+                function getWord(str: string){
+                    const prefix = ((str.match(/^[A-Z]/g)) as RegExpMatchArray)[0]
+                    return {
+                        address: prefix,
+                        value: parseInt(str.replace(prefix, ''))
+                    }
+                }
+
+                const A = getWord(a)
+                const B = getWord(b)
+                if(A.address > B.address) {
+                    return 1
+                }
+                else if (A.address < B.address) {
+                    return -1
+                }
+                else {
+                    return A.value - B.value
+                }
+            })
+            
+            const data = keys.map(key => ({ word: key, meaning: this.definitions[key] }))
+            const html = (data.map(item => `<p><strong>${item.word}</strong> - ${item.meaning}</p>`)).join('\n')
             return template.replace('<body></body>', `<body>${html}</body>`)
         }
 
