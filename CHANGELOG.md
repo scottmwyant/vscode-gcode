@@ -4,6 +4,16 @@ All notable changes will be documented in this file.
 
 Contributors: This document uses style guidelines from [Keep A Changelog](http://keepachangelog.com/).
 
+## [v0.2.0] - 2021-05-09
+
+### Added
+
+- The `G-Code: Show the dictionary` command has been added.  This command opens a webview that shows all the 'words' in the dictionary and their definitions.  The webview is a static html page, the same kind of window used to preview a markdown file.  In the future we may consider denoting the source of the definition as well (config file vs inline). 
+
+### Changed
+
+- The active document is now being scanned for inline comments on file save event in addition to the activation event that was used initially.  In the future listener for the document activation event may be removed, it remains in the codebase for now.
+
 ## [v0.1.3] - 2021-02-06
 
 ### Changed

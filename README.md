@@ -24,7 +24,7 @@ CAD/CAM packages typically show the X-axis in red, the Y-axis in green, and the 
 - Should you miss the prompt, you can use the `G-Code: Adapt to current theme` command to force the extension to adapt to the theme you're using (as long as it's supported).
 
 
-### On-Hover Definitions
+### Build your own dictionary
 
 <p align="center"><img src="https://user-images.githubusercontent.com/29161635/98761008-7cc6a780-23a2-11eb-819c-2f8287e03320.gif" alt="icon" height="400px" width="500px"></p>
 
@@ -63,6 +63,14 @@ Examples of inline definitions:
 #### A word on leading zeros
 
 When providing definitions, regardless of which method you use, don't use leading zeros. Provide a definition for `G1` not `G01`.  When you hover over a code like `G01` the extension ignores the leading zero and returns a definition for `G1`.
+
+##### Using the dictionary
+
+**<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> `>G-Code: Show the dictionary`**
+
+<p align="center"><img src="https://user-images.githubusercontent.com/29161635/117580501-35f20a00-b0c6-11eb-818e-7715809e2326.gif" alt="icon" height="400px" width="800px"></p>
+
+You can use the command, `G-Code: Show the dictionary`, to get the definitions on screen, so you can see them alongside your code as you work.  You can also see the definition for a particular code just by hovering over it.
 
 ### Line Numbering
 
