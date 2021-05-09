@@ -12,7 +12,7 @@ Contributors: This document uses style guidelines from [Keep A Changelog](http:/
 
 ### Changed
 
-- The active document is now being scanned for inline comments on file save event in addition to the activation event that was used initially.  In the future listener for the document activation event may be removed, it remains in the codebase for now.
+- The active document is now being scanned for inline comments on file save event in addition to the activation event that was used initially.  In the future, the listener for the document activation event may be removed, but that remains unchanged for now.
 
 ## [v0.1.3] - 2021-02-06
 
