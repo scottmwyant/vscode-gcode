@@ -64,7 +64,7 @@ Examples of inline definitions:
 
 When providing definitions, regardless of which method you use, don't use leading zeros. Provide a definition for `G1` not `G01`.  When you hover over a code like `G01` the extension ignores the leading zero and returns a definition for `G1`.
 
-##### Using the dictionary
+#### Using the dictionary
 
 **<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> `>G-Code: Show the dictionary`**
 
