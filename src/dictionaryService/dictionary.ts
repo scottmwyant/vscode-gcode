@@ -1,10 +1,11 @@
+import { IDictionary } from './index'
 import { commands, ExtensionContext, ViewColumn, WebviewPanel, window, workspace } from 'vscode'
 
 interface Definitions {
     [key: string]: string
 }
 
-export class Dictionary {
+export class Dictionary implements IDictionary {
 
     private definitionsFromSettings: Definitions = {};
     private definitionsFromComments: Definitions = {};
