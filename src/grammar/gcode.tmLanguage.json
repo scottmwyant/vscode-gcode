@@ -323,13 +323,13 @@
     "comments": {
       "patterns": [
         {
-          "name": "comment.parens.gcode",
+          "name": "replace.comment",
           "begin": "\\(",
           "end": "\\)",
           "contentName": "replace.comment"
         },
         {
-          "name": "comment.semi-colon.gcode",
+          "name": "replace.comment",
           "begin": "\\;",
           "end": "$",
           "contentName": "replace.comment"

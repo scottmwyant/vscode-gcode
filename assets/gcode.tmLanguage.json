@@ -323,13 +323,13 @@
     "comments": {
       "patterns": [
         {
-          "name": "comment.parens.gcode",
+          "name": "punctuation.definition.tag",
           "begin": "\\(",
           "end": "\\)",
           "contentName": "punctuation.definition.tag"
         },
         {
-          "name": "comment.semi-colon.gcode",
+          "name": "punctuation.definition.tag",
           "begin": "\\;",
           "end": "$",
           "contentName": "punctuation.definition.tag"
