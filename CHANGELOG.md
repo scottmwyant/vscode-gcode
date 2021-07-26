@@ -4,6 +4,12 @@ All notable changes will be documented in this file.
 
 Contributors: This document uses style guidelines from [Keep A Changelog](http://keepachangelog.com/).
 
+## [v0.2.1] - 2021-07-25
+
+### Changed
+
+- More consistent colorization.  Comments and variables are tokenized before generic alpha-numeric addresses.
+
 ## [v0.2.0] - 2021-05-09
 
 ### Added
@@ -12,7 +18,7 @@ Contributors: This document uses style guidelines from [Keep A Changelog](http:/
 
 ### Changed
 
-- The active document is now being scanned for inline comments on file save event in addition to the activation event that was used initially.  In the future listener for the document activation event may be removed, it remains in the codebase for now.
+- The active document is now being scanned for inline comments on file save event in addition to the activation event that was used initially.  In the future, the listener for the document activation event may be removed, but that remains unchanged for now.
 
 ## [v0.1.3] - 2021-02-06
 

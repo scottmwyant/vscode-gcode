@@ -1,10 +1,8 @@
 import { ExtensionContext, languages } from 'vscode';
 import { gcodeHoverProvider } from './gcodeHoverProvider';
-import { Dictionary } from './dictionary'
+import { IDictionary } from '../dictionaryService'
 
-export function register(context: ExtensionContext) {
-    
-    const dictionary = new Dictionary(context);
+export function register(context: ExtensionContext, dictionary: IDictionary) {
 
     context.subscriptions.push(
         languages.registerHoverProvider('gcode', new gcodeHoverProvider(dictionary))

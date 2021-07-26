@@ -6,6 +6,12 @@
   "foldingStopMarker": "^RTS$",
   "patterns": [
     {
+      "include": "#comments"
+    },
+    {
+      "include": "#variables"
+    },
+    {
       "include": "#sub-programs"
     },
     {
@@ -19,12 +25,6 @@
     },
     {
       "include": "#address-decimal"
-    },
-    {
-      "include": "#variables"
-    },
-    {
-      "include": "#comments"
     }
   ],
   "repository": {
@@ -323,13 +323,13 @@
     "comments": {
       "patterns": [
         {
-          "name": "comment.parens.gcode",
+          "name": "replace.comment",
           "begin": "\\(",
           "end": "\\)",
           "contentName": "replace.comment"
         },
         {
-          "name": "comment.semi-colon.gcode",
+          "name": "replace.comment",
           "begin": "\\;",
           "end": "$",
           "contentName": "replace.comment"

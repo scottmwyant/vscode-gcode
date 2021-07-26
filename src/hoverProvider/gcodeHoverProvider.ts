@@ -1,11 +1,11 @@
 import { CancellationToken, Hover, HoverProvider, Position, ProviderResult, TextDocument} from 'vscode'
-import { Dictionary } from './dictionary'
+import { IDictionary } from '../dictionaryService'
 
 export class gcodeHoverProvider implements HoverProvider {
 
-    private dictionary: Dictionary
+    private dictionary: IDictionary
     
-    constructor(dictionary: Dictionary){
+    constructor(dictionary: IDictionary){
         this.dictionary = dictionary
     }
 
