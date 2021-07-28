@@ -9,7 +9,13 @@
       "include": "#comments"
     },
     {
+      "include": "#sequence-numbers"
+    },
+    {
       "include": "#subprograms"
+    },
+    {
+      "include": "#flow-control"
     },
     {
       "include": "#variables"
@@ -65,6 +71,20 @@
         }
       ]
     },
+    "sequence-numbers": {
+      "comment": "Bookmarks within a program, used with skip functions",
+      "patterns": [
+        {
+          "name": "sequence",
+          "match": "N[A-Z0-9]{1,4}",
+          "captures": {
+            "0": {
+              "name": "replace.n"
+            }
+          }
+        }
+      ]
+    },
     "subprograms": {
       "comment": "Keywords related to sub programs",
       "patterns": [
@@ -79,6 +99,19 @@
         {
           "name": "subprogram.end",
           "match": "^RTS$"
+        }
+      ]
+    },
+    "flow-control": {
+      "comment": "Conditional and unconditional skip",
+      "patterns": [
+        {
+          "name": "skip.conditional",
+          "match": "IF\\s?\\[.+\\]\\s?N[A-Z0-9]{1,4}"
+        },
+        {
+          "name": "skip.unconditional",
+          "match": "GOTO N[A-Z0-9]{1,4}"
         }
       ]
     },
@@ -121,15 +154,6 @@
         {
           "name": "word.h.gcode",
           "match": "H([ABC]|\\d+)"
-        },
-        {
-          "name": "word.n.gcode",
-          "match": "^(N)(\\d{1,5}|[A-Z][A-Z0-9]{0,4})(?=\\s|$|\\()",
-          "captures": {
-            "0": {
-              "name": "replace.n"
-            }
-          }
         }
       ]
     },
