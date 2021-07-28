@@ -9,10 +9,16 @@
       "include": "#comments"
     },
     {
-      "include": "#variables"
+      "include": "#sequence-numbers"
     },
     {
-      "include": "#sub-programs"
+      "include": "#subprograms"
+    },
+    {
+      "include": "#flow-control"
+    },
+    {
+      "include": "#variables"
     },
     {
       "include": "#operators"
@@ -65,20 +71,47 @@
         }
       ]
     },
-    "sub-programs": {
+    "sequence-numbers": {
+      "comment": "Bookmarks within a program, used with skip functions",
+      "patterns": [
+        {
+          "name": "sequence",
+          "match": "N[A-Z0-9]{1,4}",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.tag"
+            }
+          }
+        }
+      ]
+    },
+    "subprograms": {
       "comment": "Keywords related to sub programs",
       "patterns": [
         {
-          "name": "sub.call.gcode",
-          "match": "CALL O([A-Z0-9]{1,4}).*"
+          "name": "subprogram.call",
+          "match": "CALL O([A-Z0-9]{1,4})[\\sA-Z0-9\\.\\[\\]\\=\\+\\-\\/]+"
         },
         {
-          "name": "sub.name.gcode",
+          "name": "subprogram.start",
           "match": "^O([A-Z0-9]{1,4})(?=\\s|$|\\()"
         },
         {
-          "name": "sub.end.gcode",
+          "name": "subprogram.end",
           "match": "^RTS$"
+        }
+      ]
+    },
+    "flow-control": {
+      "comment": "Conditional and unconditional skip",
+      "patterns": [
+        {
+          "name": "skip.conditional",
+          "match": "IF\\s?\\[.+\\]\\s?N[A-Z0-9]{1,4}"
+        },
+        {
+          "name": "skip.unconditional",
+          "match": "GOTO N[A-Z0-9]{1,4}"
         }
       ]
     },
@@ -121,15 +154,6 @@
         {
           "name": "word.h.gcode",
           "match": "H([ABC]|\\d+)"
-        },
-        {
-          "name": "word.n.gcode",
-          "match": "^(N)(\\d{1,5}|[A-Z][A-Z0-9]{0,4})(?=\\s|$|\\()",
-          "captures": {
-            "0": {
-              "name": "punctuation.definition.tag"
-            }
-          }
         }
       ]
     },
