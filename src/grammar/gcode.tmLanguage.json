@@ -9,10 +9,10 @@
       "include": "#comments"
     },
     {
-      "include": "#variables"
+      "include": "#subprograms"
     },
     {
-      "include": "#sub-programs"
+      "include": "#variables"
     },
     {
       "include": "#operators"
@@ -65,19 +65,19 @@
         }
       ]
     },
-    "sub-programs": {
+    "subprograms": {
       "comment": "Keywords related to sub programs",
       "patterns": [
         {
-          "name": "sub.call.gcode",
-          "match": "CALL O([A-Z0-9]{1,4}).*"
+          "name": "subprogram.call",
+          "match": "CALL O([A-Z0-9]{1,4})[\\sA-Z0-9\\.\\[\\]\\=\\+\\-\\/]+"
         },
         {
-          "name": "sub.name.gcode",
+          "name": "subprogram.start",
           "match": "^O([A-Z0-9]{1,4})(?=\\s|$|\\()"
         },
         {
-          "name": "sub.end.gcode",
+          "name": "subprogram.end",
           "match": "^RTS$"
         }
       ]
